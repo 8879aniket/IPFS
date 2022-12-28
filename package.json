@@ -1,0 +1,70 @@
+{
+  "name": "ipfs",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && node src/api/bin/www --exec babel-node",
+    "build": "npm run remove && babel ./src --out-dir lib --copy-files",
+    "build-prod": "npm run build && babel ./lib -d dist --copy-files",
+    "build:clean": "rimraf build",
+    "prod": "npm run build-prod && node dist/api/bin/www",
+    "dev": "nodemon ./src/api/bin/www --exec babel-node --presets @babel/preset-env",
+    "copy-env": "cp .env.example .env"
+  },
+  "engines": {
+    "node": "14.17.5"
+  },
+  "author": "Aniket Kesharwani",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.6.2",
+    "app-root-path": "^3.0.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "express": "^4.17.2",
+    "express-mongo-sanitize": "^2.1.0",
+    "helmet": "^4.6.0",
+    "ipfs-http-client": "^59.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "moment": "^2.29.1",
+    "mongoose": "^6.1.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "twilio": "^3.75.1",
+    "validator": "^13.7.0",
+    "web3": "^1.8.1",
+    "web3-providers-ws": "^1.8.1",
+    "winston": "^3.3.3",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/eslint-parser": "^7.14.4",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+    "@babel/plugin-transform-regenerator": "^7.14.5",
+    "@babel/preset-env": "^7.10.2"
+  },
+  "_moduleAliases": {
+    "@bin": "src/api/bin",
+    "@models": "build/models",
+    "@config": "build/core/config",
+    "@core": "build/core",
+    "@mail": "build/mails",
+    "@middlewares": "build/middlewares",
+    "@helpers": "build/helpers",
+    "@jobs": "build/jobs",
+    "@datasources": "build/data-sources",
+    "@schemas": "build/schemas",
+    "@abis": "abis"
+  }
+}
